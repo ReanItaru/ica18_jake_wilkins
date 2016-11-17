@@ -10,7 +10,8 @@ using System.Drawing;
 namespace ica18_jake_wilkins
 {
     class Program
-    {         
+    {
+        static CDrawer gdi = new CDrawer();
         static void Main(string[] args)
         {
             //variables
@@ -58,18 +59,17 @@ namespace ica18_jake_wilkins
         }
         static public void Draw(int[] iArray, string sMessage)
         {
-            CDrawer gdi = new CDrawer();
             gdi.Scale = 20;
 
             for (int i = 0; i < iArray.Length; i++)
                 gdi.AddLine(i, 0, i, iArray[i], Color.YellowGreen, 10);
             gdi.AddText(sMessage, 24, Color.LightGray);
             Utilities.Pause("Press any key to continue...");
+            gdi.Clear();
             Console.Clear();
         }
         static public void Draw(int[] iArray, string sMessage, int location, int size)
         {
-            CDrawer gdi = new CDrawer();
             gdi.Scale = 20;
             iArray[location] = 0;
 
@@ -78,6 +78,7 @@ namespace ica18_jake_wilkins
             gdi.AddText(sMessage, 24, Color.LightGray);
             gdi.AddLine(location, 0, location, size, Color.Red, 10);
             Utilities.Pause("Press any key to continue...");
+            gdi.Clear();
             Console.Clear();
         }
     }
